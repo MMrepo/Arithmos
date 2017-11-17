@@ -1,0 +1,3 @@
+# target: Arithmos
+github "trill-lang/FileCheck"
+github "typelift/SwiftCheck" ~> 0.9.1

@@ -1,14 +1,14 @@
 //
-//  CGPoint+Extensions.swift
+//  CGPoint+Arithmetic.swift
 //  Arithmos
 //
-//  Created by Mateusz on 15.11.2017.
-//  Copyright © 2017 Vindur. All rights reserved.
+//  Created by Mateusz on 17.12.2017.
+//  Copyright © 2017 vindur. All rights reserved.
 //
 
 import Foundation
 
-extension CGPoint {
+public extension CGPoint {
     
     static public func + (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x + right.x, y: left.y + right.y)
@@ -56,9 +56,5 @@ extension CGPoint {
     
     static public func /= (point: inout CGPoint, scalar: CGFloat) {
         point = point / scalar
-    }
-    
-    public func lerp (start: CGPoint, end: CGPoint, time: CGFloat) -> CGPoint {
-        return start + (end - start) * time
     }
 }

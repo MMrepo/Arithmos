@@ -1,0 +1,19 @@
+name: Arithmos
+include: [enviroments.yml]
+targets:
+  Arithmos:
+    type: framework
+    platform: iOS
+    sources: 
+    - Arithmos
+  ArithmosTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: 
+     - ArithmosTests
+    dependencies:
+      - carthage: SwiftCheck
+    settings:
+      groups:
+      - testsTargetRunPathSearch
+
