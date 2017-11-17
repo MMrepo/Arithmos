@@ -10,6 +10,7 @@
 		61E58F7F1FBF291700B4C088 /* Arithmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E58F751FBF291600B4C088 /* Arithmos.framework */; };
 		61E58F841FBF291700B4C088 /* ArithmosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E58F831FBF291700B4C088 /* ArithmosTests.swift */; };
 		61E58F861FBF291700B4C088 /* Arithmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 61E58F781FBF291600B4C088 /* Arithmos.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61E58F9E1FBF29E400B4C088 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E58F9D1FBF29E400B4C088 /* CGPoint+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		61E58F7E1FBF291700B4C088 /* ArithmosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArithmosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E58F831FBF291700B4C088 /* ArithmosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmosTests.swift; sourceTree = "<group>"; };
 		61E58F851FBF291700B4C088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61E58F9D1FBF29E400B4C088 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		61E58F771FBF291600B4C088 /* Arithmos */ = {
 			isa = PBXGroup;
 			children = (
+				61E58F9D1FBF29E400B4C088 /* CGPoint+Extensions.swift */,
 				61E58F781FBF291600B4C088 /* Arithmos.h */,
 				61E58F791FBF291600B4C088 /* Info.plist */,
 			);
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					61E58F741FBF291600B4C088 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 					61E58F7D1FBF291600B4C088 = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61E58F9E1FBF29E400B4C088 /* CGPoint+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +339,7 @@
 		61E58F8A1FBF291700B4C088 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -343,10 +349,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Arithmos/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vindur.Arithmos;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +363,7 @@
 		61E58F8B1FBF291700B4C088 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -364,6 +373,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Arithmos/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vindur.Arithmos;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -376,6 +386,7 @@
 		61E58F8D1FBF291700B4C088 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6L6TPVNX77;
 				INFOPLIST_FILE = ArithmosTests/Info.plist;
@@ -390,6 +401,7 @@
 		61E58F8E1FBF291700B4C088 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6L6TPVNX77;
 				INFOPLIST_FILE = ArithmosTests/Info.plist;
