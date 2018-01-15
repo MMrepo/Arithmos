@@ -84,7 +84,7 @@ public extension CALayer {
         return setValue(scaleValue, for: .scale, withAnimation:animationType)
     }
     
-    @discardableResult public func scaleBy(_ scale:CGFloat, withAnimatio animationType:AnimationType = .implicit) -> Self {
+    @discardableResult public func scaleBy(_ scale:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
         guard let oldScale = self.value(for: .scale) as? Double else { // TODO: throw an error here
             return self
         }
