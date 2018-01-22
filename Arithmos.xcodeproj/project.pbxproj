@@ -25,9 +25,11 @@
 		BF_727640486585 /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_894129872391 /* Diagnostics.swift */; };
 		BF_801624548528 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_168177126930 /* CGVector+Extensions.swift */; };
 		BF_824835242042 /* ColoredStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_883223667755 /* ColoredStream.swift */; };
+		C205465B200E241700AD02FE /* Int+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C205465A200E241700AD02FE /* Int+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C205465A200E241700AD02FE /* Int+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Utils.swift"; sourceTree = "<group>"; };
 		FR_168177126930 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		FR_190369284682 /* CGPoint+UtilsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+UtilsUnitTests.swift"; sourceTree = "<group>"; };
 		FR_232845366653 /* EditDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDistance.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				FR_168177126930 /* CGVector+Extensions.swift */,
 				FR_252867041286 /* Comparable+Extensions.swift */,
 				FR_445345111091 /* Info.plist */,
+				C205465A200E241700AD02FE /* Int+Utils.swift */,
 			);
 			path = Arithmos;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_271938345427 /* CALayer+Functional.swift in Sources */,
+				C205465B200E241700AD02FE /* Int+Utils.swift in Sources */,
 				BF_271779875601 /* FloatingPoint+Extensions.swift in Sources */,
 				BF_213341184418 /* CGPoint+Arithmetic.swift in Sources */,
 				BF_308020066080 /* CGPoint+Utils.swift in Sources */,
@@ -277,6 +281,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
