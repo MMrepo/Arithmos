@@ -148,12 +148,13 @@ public extension CALayer {
 }
 
 public extension CABasicAnimation {
-    convenience public init(for property: CALayerAnimatableProperties, from: Any?, to: Any?, by: Any? = nil, duration: CFTimeInterval) {
+    convenience public init(for property: CALayerAnimatableProperties, from: Any?, to: Any?, by: Any? = nil, duration: CFTimeInterval, beginTime: CFTimeInterval = 0) {
         self.init(keyPath: property.keyPath)
         self.fromValue = from
         self.toValue = to
         self.byValue = by
         self.duration = duration
+        self.beginTime = beginTime
     }
 }
 
