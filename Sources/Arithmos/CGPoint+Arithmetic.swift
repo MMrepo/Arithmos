@@ -7,54 +7,56 @@
 //
 
 import Foundation
+import CoreGraphics
+import QuartzCore
 
 public extension CGPoint {
     
-    static public func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    static func + (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x + right.x, y: left.y + right.y)
     }
     
-    static public func += (left: inout CGPoint, right: CGPoint) {
+    static func += (left: inout CGPoint, right: CGPoint) {
         left = left + right
     }
     
-    static public func - (left: CGPoint, right: CGPoint) -> CGPoint {
+    static func - (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x - right.x, y: left.y - right.y)
     }
     
-    static public func -= (left: inout CGPoint, right: CGPoint) {
+    static func -= (left: inout CGPoint, right: CGPoint) {
         left = left - right
     }
     
-    static public func * (left: CGPoint, right: CGPoint) -> CGPoint {
+    static func * (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x * right.x, y: left.y * right.y)
     }
     
-    static public func *= (left: inout CGPoint, right: CGPoint) {
+    static func *= (left: inout CGPoint, right: CGPoint) {
         left = left * right
     }
     
-    static public func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
+    static func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
         return CGPoint(x: point.x * scalar, y: point.y * scalar)
     }
     
-    static public func *= (point: inout CGPoint, scalar: CGFloat) {
+    static func *= (point: inout CGPoint, scalar: CGFloat) {
         point = point * scalar
     }
     
-    static public func / (left: CGPoint, right: CGPoint) -> CGPoint {
+    static func / (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x / right.x, y: left.y / right.y)
     }
     
-    static public func /= (left: inout CGPoint, right: CGPoint) {
+    static func /= (left: inout CGPoint, right: CGPoint) {
         left = left / right
     }
     
-    static public func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
+    static func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
         return CGPoint(x: point.x / scalar, y: point.y / scalar)
     }
     
-    static public func /= (point: inout CGPoint, scalar: CGFloat) {
+    static func /= (point: inout CGPoint, scalar: CGFloat) {
         point = point / scalar
     }
 }

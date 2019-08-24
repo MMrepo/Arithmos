@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import QuartzCore
 
 extension FloatingPoint {
   

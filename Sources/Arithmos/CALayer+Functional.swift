@@ -6,7 +6,9 @@
 //  Copyright © 2017 vindur. All rights reserved.
 //
 
+import Foundation
 import CoreGraphics
+import QuartzCore
 
 public enum CALayerAnimatableProperties:String {
     case rotation = "transform.rotation.z"
@@ -21,13 +23,13 @@ public enum CALayerAnimatableProperties:String {
 
 public extension CALayer {
     
-    public enum AnimationType {
+    enum AnimationType {
         case implicit
         case none
         case custom(CAAnimation)
     }
     
-    @discardableResult public func rotate(with angle:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func rotate(with angle:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
         guard let oldAngle = self.value(for: .rotation) as? Double else { // TODO: throw an error here
             return self
         }
@@ -35,41 +37,42 @@ public extension CALayer {
         return setValue(angleValue, for: .rotation, withAnimation: animationType)
     }
     
-    @discardableResult public func rotate(to angle:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func rotate(to angle:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
         let angleValue = NSNumber(value: Double(angle))
         return setValue(angleValue, for: .rotation, withAnimation: animationType)
     }
     
-    @discardableResult public func move(to point:CGPoint, withAnimation animationType:AnimationType = .implicit) -> Self {
-        let pointValue = NSValue(cgPoint: point)
+    @discardableResult func move(to point:CGPoint, withAnimation animationType:AnimationType = .implicit) -> Self {
+      
+      let pointValue = NSValue(nonretainedObject: point)
         return setValue(pointValue, for: .position, withAnimation: animationType)
     }
     
-    @discardableResult public func move(by vector:CGVector, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func move(by vector:CGVector, withAnimation animationType:AnimationType = .implicit) -> Self {
         guard let oldPosition = self.value(for: .position) as? CGPoint else { // TODO: throw an error here
             return self
         }
-        let pointValue = NSValue(cgPoint: oldPosition.moved(by: vector))
+      let pointValue = NSValue(nonretainedObject: oldPosition.moved(by: vector))
         return setValue(pointValue, for: .position, withAnimation: animationType)
     }
     
-    @discardableResult public func moveCenter(to point:CGPoint, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func moveCenter(to point:CGPoint, withAnimation animationType:AnimationType = .implicit) -> Self {
         let vectorFromCenter = self.frame.center.vector(to: self.position)
         let newPoint = point.moved(by: vectorFromCenter)
         return self.move(to: newPoint, withAnimation: animationType)
     }
     
-    @discardableResult public func moveCenter(by vector:CGVector, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func moveCenter(by vector:CGVector, withAnimation animationType:AnimationType = .implicit) -> Self {
         let vectorFromCenter = self.frame.center.vector(to: self.position)
         let newVector = vector + vectorFromCenter
         return self.move(by: newVector, withAnimation: animationType)
     }
     
-    @discardableResult public func fit(into:CGRect, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func fit(into:CGRect, withAnimation animationType:AnimationType = .implicit) -> Self {
         return fit(into: into.size).moveCenter(to: into.center)
     }
     
-    @discardableResult public func fit(into:CGSize, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func fit(into:CGSize, withAnimation animationType:AnimationType = .implicit) -> Self {
         let boundingBox = self.frame
         let widthScale = into.width/boundingBox.width
         let heightScale = into.height/boundingBox.height
@@ -78,13 +81,13 @@ public extension CALayer {
         return scaleTo(factor)
     }
     
-    @discardableResult public func scaleTo(_ scale:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func scaleTo(_ scale:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
         
         let scaleValue = NSNumber(value: Double(scale))
         return setValue(scaleValue, for: .scale, withAnimation:animationType)
     }
     
-    @discardableResult public func scaleBy(_ scale:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func scaleBy(_ scale:CGFloat, withAnimation animationType:AnimationType = .implicit) -> Self {
         guard let oldScale = self.value(for: .scale) as? Double else { // TODO: throw an error here
             return self
         }
@@ -92,15 +95,15 @@ public extension CALayer {
         return setValue(scaleValue, for: .scale, withAnimation:animationType)
     }
     
-    @discardableResult public func setValue(_ value: Any?, for CALayerTransformationType: CALayerAnimatableProperties, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func setValue(_ value: Any?, for CALayerTransformationType: CALayerAnimatableProperties, withAnimation animationType:AnimationType = .implicit) -> Self {
         return setValue(value, forKeyPath:CALayerTransformationType.keyPath, withAnimation:animationType)
     }
     
-    public func value(for CALayerTransformationType: CALayerAnimatableProperties) ->  Any? {
+    func value(for CALayerTransformationType: CALayerAnimatableProperties) ->  Any? {
         return value(forKeyPath: CALayerTransformationType.keyPath)
     }
     
-    @discardableResult public func setValue(_ value: Any?, forKeyPath keyPath: String, withAnimation animationType:AnimationType = .implicit) -> Self {
+    @discardableResult func setValue(_ value: Any?, forKeyPath keyPath: String, withAnimation animationType:AnimationType = .implicit) -> Self {
         
         CATransaction.begin()
         
@@ -120,7 +123,7 @@ public extension CALayer {
         return self
     }
     
-    public func animate(withDuration duration: CFTimeInterval = 0.25, timingFunction: CAMediaTimingFunction? = nil, _ scope:(CALayer)->()) {
+    func animate(withDuration duration: CFTimeInterval = 0.25, timingFunction: CAMediaTimingFunction? = nil, _ scope:(CALayer)->()) {
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
         CATransaction.setAnimationTimingFunction(timingFunction)
@@ -128,27 +131,27 @@ public extension CALayer {
         CATransaction.commit()
     }
     
-    public func stopAnimations() {
+    func stopAnimations() {
         self.removeAllAnimations()
     }
     
     //MARK: - public helpers for most common values
     
-    public var rotationAngle: CGFloat? {
+    var rotationAngle: CGFloat? {
         return self.value(for: .rotation) as? CGFloat
     }
     
-    public var normalizedRotationAngle: CGFloat? {
+    var normalizedRotationAngle: CGFloat? {
         return rotationAngle?.normalizedAngle()
     }
     
-    public var scale: CGFloat? {
+    var scale: CGFloat? {
         return self.value(for: .scale) as? CGFloat
     }
 }
 
 public extension CABasicAnimation {
-    convenience public init(for property: CALayerAnimatableProperties, from: Any?, to: Any?, by: Any? = nil, duration: CFTimeInterval, beginTime: CFTimeInterval = 0) {
+    convenience init(for property: CALayerAnimatableProperties, from: Any?, to: Any?, by: Any? = nil, duration: CFTimeInterval, beginTime: CFTimeInterval = 0) {
         self.init(keyPath: property.keyPath)
         self.fromValue = from
         self.toValue = to

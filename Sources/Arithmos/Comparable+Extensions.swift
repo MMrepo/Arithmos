@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import QuartzCore
 
 extension Comparable {
     public func clamped(_ lowerBound: Self, _ upperBound: Self) -> Self {
@@ -23,7 +25,7 @@ extension Comparable {
     }
 }
 
-extension Comparable & FloatingPoint {
+extension FloatingPoint & Comparable  {
     public func clampedAngle(_ lowerBound: Self, _ upperBound: Self) -> Self {
         let angle = self.normalizedAngle()
         let lB = lowerBound.normalizedAngle()
